@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Six Moons &amp; a Little Magic | An Archive of Us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ivory:#f7efe2;--gold:#c5a16a;--burgundy:#4b1929}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;min-height:100%;font-family:Inter,sans-serif;background:#21150f;color:var(--ivory)}
+button{font:inherit}
+.scene{position:relative;width:100%;height:100svh;min-height:620px;overflow:hidden;isolation:isolate;background:#21150f}
+.background{position:absolute;inset:0;z-index:0;background:url("Kizuna-bedroom.png") center/cover no-repeat}
+.background::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,17,11,.34),transparent 34%,rgba(28,17,11,.08) 70%,rgba(28,17,11,.17))}
+.intro{position:absolute;z-index:2;top:4.2%;left:0;width:100%;padding:0 18px;text-align:center;text-shadow:0 2px 16px rgba(0,0,0,.62);transition:opacity .75s,transform .75s}
+.eyebrow{font-size:10px;letter-spacing:.36em;text-transform:uppercase;color:#ead2ac}
+h1{font:400 clamp(38px,5.2vw,72px)/.98 "Cormorant Garamond",serif;margin:13px 0 0;color:#fff7ed}
+.subtitle{font:italic clamp(23px,3vw,37px) "Cormorant Garamond",serif;color:#e7c99e;margin-top:5px}
+.intro-copy{max-width:460px;margin:13px auto 0;font:19px/1.35 "Cormorant Garamond",serif;color:#fff5e8}
+.chest-hotspot{position:absolute;z-index:3;left:30%;top:37%;width:40%;height:46%;border:0;background:transparent;cursor:pointer;border-radius:8px;outline:none;-webkit-tap-highlight-color:transparent}
+.chest-hotspot:focus-visible{outline:2px solid rgba(235,199,137,.95);outline-offset:5px}
+.tap-hint{position:absolute;z-index:4;left:0;right:0;bottom:3.2%;text-align:center;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:#fff2df;text-shadow:0 2px 10px #20130c;pointer-events:none;animation:glow 2.6s ease-in-out infinite;transition:opacity .5s}
+@keyframes glow{0%,100%{opacity:.68}50%{opacity:1}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* Chest interior */
+.open-view{position:absolute;inset:0;z-index:8;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 14px;background:linear-gradient(rgba(28,15,12,.48),rgba(28,12,15,.68)),url("Kizuna-bedroom.png") center/cover no-repeat;backdrop-filter:blur(2px);opacity:0;visibility:hidden;transition:opacity .9s,visibility .9s;overflow-y:auto}
+.open-view.visible{opacity:1;visibility:visible}
+.open-heading{text-align:center;font:400 clamp(30px,4vw,45px)/1.05 "Cormorant Garamond",serif;color:#fff4e6;text-shadow:0 2px 15px rgba(0,0,0,.6);margin:0 0 17px}
+.open-heading small{display:block;font:9px Inter,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#e3c08b;margin-bottom:9px}
+.interior{width:min(720px,94vw);padding:14px;background:linear-gradient(135deg,#60402a,#24140d 50%,#67452b);border:5px solid #27150e;outline:1px solid #b18b51;box-shadow:0 25px 65px rgba(0,0,0,.55);border-radius:3px}
+.interior-inner{padding:13px;background:linear-gradient(145deg,#401722,#260e17);border:2px solid #b18a4d;box-shadow:inset 0 0 30px rgba(0,0,0,.65)}
+.compartments{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.gift{min-height:126px;padding:13px 7px;border:1px solid rgba(208,171,110,.55);color:#f8ead5;background:radial-gradient(ellipse at 50% 30%,#713447,#421724 80%);cursor:pointer;transition:transform .25s,background .25s,border-color .25s}
+.gift:hover:not(:disabled){transform:translateY(-4px);background:#75394b;border-color:#e1c18a}
+.gift:disabled{opacity:.5;cursor:not-allowed}
+.gift-number{display:block;font:28px "Cormorant Garamond",serif;color:#d4b27a;margin-bottom:5px}
+.gift-name{display:block;font:17px/1.1 "Cormorant Garamond",serif}
+.gift-status{display:block;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:#d6b98c;margin-top:10px}
+.gift.final,.anniversary-gift,.rose-gift{grid-column:span 2}
+.anniversary-gift{background:linear-gradient(145deg,#80533c,#4b1929);border-color:#e0bd83}
+.rose-gift{background:linear-gradient(145deg,#76513d,#38201b);border-color:#d8b985}
+.progress{margin-top:16px;text-align:center;font-size:9px;letter-spacing:.2em;color:#fff1de;text-shadow:0 2px 8px #24140d}
+.chest-finish{display:none;margin:20px auto 0;padding:13px 24px;border:1px solid #dfc18e;background:linear-gradient(145deg,#6b3b43,#3e1825);color:#fff3df;font:10px Inter,sans-serif;letter-spacing:.17em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 24px #160b0870;transition:transform .25s,background .25s}
+.chest-finish.visible{display:block;animation:fadeIn .7s ease both}
+.chest-finish:hover{transform:translateY(-3px);background:#80505a}
+
+/* Generic modals + letters */
+.modal,.tease-modal,.rose-modal{position:fixed;inset:0;display:none;justify-content:center;align-items:center;padding:20px;background:rgba(17,10,7,.82);backdrop-filter:blur(9px)}
+.modal{z-index:20}.tease-modal{z-index:30}.rose-modal{z-index:32}
+.modal.visible,.tease-modal.visible,.rose-modal.visible{display:flex}
+.letter,.tease-card,.rose-card{width:min(550px,100%);max-height:88vh;overflow-y:auto;padding:42px clamp(22px,6vw,55px);position:relative;color:#38261c;background:linear-gradient(145deg,#fff9ed,#edddc3);border:1px solid #b9955c;box-shadow:0 25px 70px rgba(0,0,0,.5)}
+.letter::after,.rose-card::after{content:"";position:absolute;inset:8px;border:1px solid rgba(155,113,62,.35);pointer-events:none}
+.letter-label,.tease-kicker,.rose-kicker{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#98754b}
+.letter h2{font:500 42px "Cormorant Garamond",serif;margin:12px 0 18px}
+.letter-body{font:21px/1.55 "Cormorant Garamond",serif;white-space:pre-line}
+.close-button{display:block;margin:27px auto 0;padding:11px 22px;border:1px solid #98754b;background:transparent;color:#50331e;font-size:9px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.close-button:hover{background:#e9d9bf}
+.tease-card{width:min(460px,100%);padding:38px 30px;text-align:center}
+.tease-card h2{font:500 38px "Cormorant Garamond",serif;margin:12px 0}
+.tease-card p{font:italic 21px/1.45 "Cormorant Garamond",serif;color:#765638;margin:0 0 22px}
+.tease-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.tease-actions button{padding:11px 20px;border:1px solid #98754b;background:transparent;color:#50331e;font-size:9px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.tease-actions .primary{background:#4b1929;border-color:#4b1929;color:#fff1dc}
+
+/* Anniversary letter: ruled handwritten paper */
+#anniversaryLetterModal .letter{padding:48px clamp(28px,7vw,65px);background:#fbf3e5;border:none;box-shadow:0 20px 60px rgba(45,27,16,.35)}
+#anniversaryLetterModal .letter::after{display:none}
+#anniversaryLetterModal .letter h2{font-family:"Great Vibes",cursive;font-size:46px;font-weight:400}
+#anniversaryLetterBody{font-family:"Great Vibes",cursive;font-size:29px;line-height:52px;color:#50372b;background:repeating-linear-gradient(to bottom,transparent 0,transparent 50px,rgba(174,139,91,.3) 51px,transparent 52px);background-size:100% 52px;background-position:0 3px;padding:3px 2px 12px;margin-top:18px}
+.anniversary-letter-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:25px}
+.anniversary-letter-actions button{margin:0}
+.download-letter{background:#4b1929;color:#fff1dc;border-color:#4b1929}
+.download-letter:hover{background:#70404a}
+
+/* Puzzle */
+.puzzle-view{position:fixed;inset:0;z-index:18;overflow-y:auto;padding:25px 5vw 50px;opacity:0;visibility:hidden;transition:opacity .5s,visibility .5s;background:radial-gradient(ellipse at 50% 0%,#f8edda,#e7d5b8 75%,#d5bd9c);color:#3c291e}
+.puzzle-view.visible{opacity:1;visibility:visible}
+.stage-back{border:0;background:transparent;color:#785936;cursor:pointer;font-size:10px;letter-spacing:.13em;text-transform:uppercase;padding:10px 0}
+.puzzle-card{width:min(650px,100%);margin:4vh auto 0;padding:clamp(25px,5vw,48px);background:linear-gradient(145deg,#fffaf0,#eee0c9);border:1px solid #c6a575;box-shadow:0 22px 65px #42281926;position:relative}
+.puzzle-card:after{content:"";position:absolute;inset:9px;border:1px solid #b9955c55;pointer-events:none}
+.stage-eyebrow{font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#9a7548}
+.puzzle-card h2{font:500 clamp(38px,6vw,58px)/.98 "Cormorant Garamond",serif;margin:13px 0;color:#482c20}
+.puzzle-card h2 em{color:#936b42;font-weight:400}
+.puzzle-intro{font:19px/1.45 "Cormorant Garamond",serif;color:#785f49;margin:0 0 25px}
+.jigsaw-layout{display:grid;grid-template-columns:minmax(230px,1fr) minmax(220px,.9fr);gap:clamp(20px,4vw,42px);align-items:center;margin:24px 0 10px}
+.heart-board-wrap{position:relative;width:min(100%,340px);margin:auto;aspect-ratio:1/1;display:grid;place-items:center}
+.heart-board{width:100%;height:100%;position:relative;background:radial-gradient(circle,#f9eee5 0 43%,transparent 44%)}
+.heart-board:before{content:"";position:absolute;inset:7%;border-radius:50%;background:radial-gradient(circle at 50% 52%,#f5d8d0 0 10%,#f0c4c0 45%,#e8b4b4 72%,transparent 73%);opacity:.5}
+.puzzle-slot{position:absolute;width:35%;height:39%;border:2px dashed #bd8f8d;border-radius:55% 55% 48% 48%;background:#fff8edb8;color:#9d7770;font:17px 'Cormorant Garamond',serif;display:grid;place-items:center;cursor:pointer;transition:.25s}
+.puzzle-slot[data-slot="0"]{top:8%;left:32.5%}
+.puzzle-slot[data-slot="1"]{top:25%;left:8%;transform:rotate(-48deg)}
+.puzzle-slot[data-slot="2"]{top:25%;right:8%;transform:rotate(48deg)}
+.puzzle-slot[data-slot="3"]{bottom:9%;left:17%;transform:rotate(-25deg)}
+.puzzle-slot[data-slot="4"]{bottom:9%;right:17%;transform:rotate(25deg)}
+.puzzle-slot.over{background:#f3d4d0;border-color:#9e6c64}
+.puzzle-slot.filled{border:1px solid #bd8584;background:linear-gradient(145deg,#f4c9c5,#d98f98);box-shadow:inset 0 2px 8px #fff9;cursor:default;color:#fff8ed}
+.piece-panel{padding:18px;background:#f7eddd;border:1px solid #d7c1a0;box-shadow:inset 0 0 0 5px #fff9ef}
+.piece-heading{display:flex;justify-content:space-between;gap:10px;font:600 10px Inter,sans-serif;letter-spacing:.15em;color:#82603c}
+.piece-heading span{color:#a67c51}
+.piece-instructions{font:17px/1.35 'Cormorant Garamond',serif;color:#80674f;margin:12px 0 16px}
+.piece-tray{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.jigsaw-piece{aspect-ratio:.82/1;min-width:0;display:grid;place-items:center;border:1px solid #b77f79;border-radius:55% 55% 48% 48%;background:linear-gradient(145deg,#f4c9c3,#ce8790);color:#fff8ed;box-shadow:0 4px 8px #79504422,inset 0 1px 5px #fff8;font:18px 'Cormorant Garamond',serif;cursor:grab;touch-action:manipulation;transition:transform .2s,opacity .2s}
+.jigsaw-piece:nth-child(even){background:linear-gradient(145deg,#eab8b8,#bf7885)}
+.jigsaw-piece.selected{outline:3px solid #98704b;outline-offset:2px;transform:translateY(-4px)}
+.jigsaw-piece.used{opacity:0;pointer-events:none;transform:scale(.65)}
+.heart-reveal{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0;transform:scale(.7);pointer-events:none;transition:opacity .8s,transform .8s;z-index:3;color:#fff8ed;text-shadow:0 2px 8px #713f3f66}
+.heart-reveal:before{content:"";position:absolute;width:72%;height:72%;border-radius:50%;background:radial-gradient(circle,#f5d3c7 0 12%,#df9ca1 13% 48%,#b96779 70%,transparent 71%);z-index:-1}
+.heart-reveal.visible{opacity:1;transform:scale(1)}
+.heart-reveal .kanji{font:58px 'Cormorant Garamond',serif}
+.heart-reveal .romaji{font:10px Inter,sans-serif;letter-spacing:.32em;margin:2px 0 8px}
+.heart-reveal small{font:italic 13px 'Cormorant Garamond',serif;max-width:180px;line-height:1.25}
+.puzzle-feedback{min-height:38px;margin:13px 0 5px;text-align:center;color:#87694b;font:italic 15px 'Cormorant Garamond',serif}
+.unlock-button{display:block;margin:8px auto 0;padding:13px 25px;border:1px solid #4b1929;background:#4b1929;color:#fff1dc;cursor:pointer;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.cabinet-unlock{margin-top:18px}
+.unlock-button:disabled{opacity:.35;cursor:not-allowed}
+
+/* Album */
+.album-scene{position:fixed;inset:0;z-index:18;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at center,rgba(113,72,47,.45),transparent 70%),linear-gradient(145deg,#21130f,#392018);opacity:0;visibility:hidden;transition:opacity 1s,visibility 1s;perspective:1800px}
+.album-scene.visible{opacity:1;visibility:visible}
+.album-scene .stage-back{position:absolute;top:14px;left:18px;z-index:6;color:#e8cfaa}
+.album{position:relative;width:min(900px,94vw);aspect-ratio:1.5/1;transform-style:preserve-3d}
+.album-cover{position:absolute;inset:0;z-index:5;overflow:hidden;padding:0;cursor:pointer;color:inherit;border:3px solid #a77b42;border-radius:7px 13px 13px 7px;background:radial-gradient(ellipse at 50% 40%,#713526,#421b1b 65%,#260f13);box-shadow:inset 0 0 0 5px rgba(207,166,99,.18),inset 0 0 45px rgba(0,0,0,.55),0 30px 75px rgba(0,0,0,.65);transform-origin:left center;transition:transform 1.7s cubic-bezier(.65,0,.25,1),opacity .6s 1.1s;backface-visibility:hidden}
+.album-cover::before{content:"";position:absolute;inset:13px;border:1px solid #c5a16a;border-radius:3px;pointer-events:none}
+.album-cover::after{content:"✦";position:absolute;top:9%;left:50%;transform:translateX(-50%);color:#e0bd7c;font-size:25px;text-shadow:0 0 15px rgba(219,174,105,.7)}
+.album-cover-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center}
+.album-ornament{color:#d9b475;font-size:30px;margin-bottom:14px;letter-spacing:10px}
+.album-title{font:italic clamp(30px,5vw,48px)/1.1 "Cormorant Garamond",serif;color:#e7c58c;text-shadow:0 3px 12px #1c0908}
+.album-subtitle{margin-top:20px;color:#d7b77f;font-size:9px;letter-spacing:.35em;text-transform:uppercase}
+.album-ribbon{position:absolute;right:-17px;top:0;width:34px;height:100%;z-index:6;background:linear-gradient(90deg,#6c1728,#a13c4b,#5b1424);box-shadow:3px 0 12px #16090a;transition:opacity .7s,transform .7s;pointer-events:none}
+.album.opened .album-cover{transform:rotateY(-155deg);opacity:0;pointer-events:none}
+.album.opened .album-ribbon{opacity:0;transform:translateX(35px)}
+.album-pages{position:absolute;inset:5px;overflow:hidden;border-radius:5px;background:#f3e5ca;box-shadow:inset 0 0 35px rgba(91,57,31,.25)}
+.album-inside{width:100%;height:100%;color:#593c2a}
+.album-open-hint{position:absolute;left:0;right:0;bottom:6%;text-align:center;color:#e8cfaa;font-size:9px;letter-spacing:.25em;text-transform:uppercase;animation:glow 2.5s infinite}
+.album-navigation{display:none;position:absolute;bottom:3%;left:0;right:0;justify-content:center;align-items:center;gap:22px;color:#e8cfaa;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+.album-navigation button{padding:10px 18px;border:1px solid #b99567;background:rgba(75,25,41,.7);color:#fff1dc;font-size:10px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.album-navigation button:disabled{opacity:.35;cursor:not-allowed}
+.album-spread{display:grid;grid-template-columns:1fr 1fr;width:100%;height:100%;animation:fadeIn .5s ease both}
+.album-page-left,.album-page-right{padding:clamp(18px,4vw,40px);display:flex;flex-direction:column;justify-content:center;gap:12px;min-width:0;text-align:center;color:#593c2a}
+.album-page-left{border-right:1px solid rgba(139,100,60,.3)}
+.album-page-right:not(.intro-right){flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:center}
+.album-page-decoration{font-size:32px;color:#b18a51}
+.album-chapter-number{font-size:9px;letter-spacing:.3em;color:#98754b}
+.album-spread h2{font:italic 500 clamp(26px,4vw,38px)/1.1 "Cormorant Garamond",serif;margin:0}
+.album-spread p{font:italic clamp(16px,2.2vw,21px)/1.45 "Cormorant Garamond",serif;margin:0}
+.album-chapter-note{color:#936b42}
+.album-signature{font:italic 18px "Cormorant Garamond",serif;color:#936b42}
+.album-photo-card{width:46%;padding:6px 6px 9px;background:#fffdf6;border:1px solid #dfceb1;box-shadow:0 6px 16px #4c2d1933;cursor:zoom-in;transform:rotate(-2deg)}
+.album-photo-card:nth-child(2){transform:rotate(2deg)}
+.album-photo-card img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#e6d9c5}
+.album-photo-card span{display:block;padding-top:6px;font:italic 14px "Cormorant Garamond",serif;color:#75583b}
+.photo-lightbox{position:fixed;inset:0;z-index:35;display:none;align-items:center;justify-content:center;flex-direction:column;padding:25px;background:#180e0af2}
+.photo-lightbox.visible{display:flex}
+.photo-lightbox img{max-width:min(900px,90vw);max-height:78vh;object-fit:contain;border:7px solid #fff5e8;box-shadow:0 20px 60px #0008}
+#lightboxCaption{color:#f5dfbd;font:italic 22px "Cormorant Garamond",serif;margin-top:14px}
+.lightbox-close{position:absolute;top:16px;right:26px;border:0;background:none;color:#fff;font-size:36px;cursor:pointer}
+
+/* The last question */
+.final-surprise{position:fixed;inset:0;z-index:45;display:flex;align-items:center;justify-content:center;padding:22px;background:radial-gradient(ellipse at 50% 20%,rgba(91,52,48,.84),rgba(25,15,14,.97));backdrop-filter:blur(12px);opacity:0;visibility:hidden;transition:opacity .9s,visibility .9s;overflow-y:auto}
+.final-surprise.visible{opacity:1;visibility:visible}
+.final-card{width:min(680px,100%);margin:auto;padding:clamp(30px,6vw,64px) clamp(22px,6vw,58px);position:relative;text-align:center;color:#4a3025;background:linear-gradient(145deg,#fffaf0,#edddc4);border:1px solid #c7a36e;box-shadow:0 30px 90px #0008}
+.final-card:before{content:"";position:absolute;inset:9px;border:1px solid #b9955c66;pointer-events:none}
+.final-kicker{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#9b7549}
+.final-card h2{font:400 clamp(36px,6vw,57px)/1.02 "Cormorant Garamond",serif;margin:17px 0 8px;color:#513326}
+.final-intro{font:italic clamp(21px,3vw,27px)/1.25 "Cormorant Garamond",serif;color:#886849;margin:0 0 27px}
+.final-question{font:500 clamp(27px,4.6vw,43px)/1.16 "Cormorant Garamond",serif;color:#4b1929;margin:24px auto;max-width:550px}
+.final-subtext{font:italic 18px/1.4 "Cormorant Garamond",serif;color:#876c51;margin:0 auto 25px;max-width:470px}
+.final-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:520px;margin:25px auto 0}
+.final-option{min-height:52px;padding:13px 12px;border:1px solid #b99567;background:#fff9ef;color:#563a2b;font:16px/1.2 "Cormorant Garamond",serif;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.final-option:hover{background:#4b1929;color:#fff4e5;transform:translateY(-2px)}
+.final-option:last-child{grid-column:1/-1}
+.final-option.chosen{background:#4b1929;color:#fff4e5;border-color:#4b1929}
+.final-response{display:none;margin:25px auto 0;padding-top:22px;border-top:1px solid #c9ad83;max-width:480px;color:#704b37}
+.final-response.visible{display:block;animation:fadeIn .7s ease both}
+.final-reaction-icon{display:block;font:42px "Cormorant Garamond",serif;margin:0 auto 10px;color:#a34c5c;animation:pop .55s cubic-bezier(.2,.8,.2,1) both}
+.final-response[data-answer="no"] .final-reaction-icon{color:#8b7869}
+.final-response[data-answer="time"] .final-reaction-icon{color:#9b805c}
+@keyframes pop{0%{opacity:0;transform:scale(.55) rotate(-12deg)}70%{opacity:1;transform:scale(1.16) rotate(4deg)}100%{transform:none}}
+.final-reaction-title{display:block;font:500 25px "Cormorant Garamond",serif;color:#4b1929;margin-bottom:7px}
+.final-reaction-copy{display:block;font:italic 21px/1.38 "Cormorant Garamond",serif;white-space:pre-line}
+.final-try-again{display:block;margin:17px auto 0;font:10px Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#9b7549}
+.final-signoff{margin:24px 0 0;font:italic 17px "Cormorant Garamond",serif;color:#9b7549}
+.final-exit{display:none;margin:20px auto 0;padding:10px 15px;border:1px solid #b99567;background:transparent;color:#785936;font:10px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.final-exit.visible{display:block;animation:fadeIn .5s ease both}
+.final-exit:hover{background:#4b1929;color:#fff4e5}
+
+/* Rose */
+.rose-card{width:min(500px,100%);padding:40px 30px 34px;text-align:center}
+.rose-card h2{font:500 39px "Cormorant Garamond",serif;margin:10px 0 0;color:#513326}
+.rose-art{width:min(220px,62vw);height:245px;margin:8px auto 4px;display:block;filter:drop-shadow(0 12px 12px rgba(76,43,31,.15));--petal:#a33e50;--petal-light:#d77983;--petal-dark:#70263b;--leaf:#62724b}
+.rose-art[data-answer="no"]{--petal:#e9dfce;--petal-light:#fff9ed;--petal-dark:#c9bda9;--leaf:#718064}
+.rose-art[data-answer="time"]{--petal:#8b719e;--petal-light:#c4afd4;--petal-dark:#5b466f;--leaf:#65745a}
+.rose-art[data-answer="heart"]{--petal:#d9879b;--petal-light:#f3bdc9;--petal-dark:#ad536e;--leaf:#687a50}
+.rose-note{max-width:350px;margin:4px auto 0;font:italic 21px/1.45 "Cormorant Garamond",serif;color:#765638}
+.rose-close{margin-top:22px}
+
+/* Finale */
+.chest-finale{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at 50% 35%,rgba(89,55,43,.88),rgba(24,14,11,.98));opacity:0;visibility:hidden;transition:opacity 1.2s,visibility 1.2s;text-align:center}
+.chest-finale.visible{opacity:1;visibility:visible}
+.chest-finale-card{width:min(620px,100%);padding:clamp(34px,7vw,70px) 25px;color:#fff2df;border:1px solid #c6a16d;background:linear-gradient(145deg,rgba(75,42,34,.76),rgba(35,18,17,.88));box-shadow:0 25px 90px #0009;position:relative}
+.chest-finale-card:before{content:"";position:absolute;inset:9px;border:1px solid #c6a16d66;pointer-events:none}
+.chest-finale-kicker{font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:#d9b982}
+.chest-finale h2{font:400 clamp(39px,7vw,66px)/1.05 "Cormorant Garamond",serif;margin:22px 0 13px;color:#fff6e9}
+.chest-finale p{font:italic clamp(20px,3vw,25px)/1.5 "Cormorant Garamond",serif;color:#e7cfad;margin:8px auto;max-width:470px}
+.chest-finale .final-signature{margin-top:28px;font:italic 22px "Cormorant Garamond",serif;color:#f5dfbd}
+
+@media(max-width:700px){
+ .scene{min-height:580px}.background{background-position:54% center}.intro{top:3.5%}.intro-copy{font-size:16px;max-width:330px}
+ .chest-hotspot{left:14%;top:42%;width:72%;height:42%}.tap-hint{bottom:3%;font-size:8px}
+ .compartments{grid-template-columns:repeat(2,1fr);gap:8px}.gift{min-height:105px}.interior{padding:9px}.interior-inner{padding:8px}
+ .open-view{justify-content:flex-start;padding-top:7vh}
+ .jigsaw-layout{grid-template-columns:1fr;gap:15px}.heart-board-wrap{width:min(78vw,300px)}.piece-panel{padding:14px}
+ .piece-tray{grid-template-columns:repeat(3,minmax(0,1fr))}.jigsaw-piece{max-width:78px;width:100%;justify-self:center}
+ .puzzle-view{padding:16px 13px 35px}.puzzle-card{margin-top:2vh;padding:25px 19px}
+ .album{aspect-ratio:auto;height:72vh}.album-pages{overflow-y:auto}
+ .album-spread{grid-template-columns:1fr;height:auto}.album-page-left{border-right:0}.album-photo-card{width:44%}
+ .final-options{grid-template-columns:1fr}.final-option:last-child{grid-column:auto}.final-card{padding:35px 22px}
+}
+@media(max-height:700px) and (min-width:701px){.intro{top:2%}.intro-copy{margin-top:8px}.chest-hotspot{top:34%;height:55%}.open-view{justify-content:flex-start;padding-top:3vh}}
+
+/* ===== Album decoration ===== */
+.album-scene{overflow:hidden;background:radial-gradient(ellipse at 50% 45%,rgba(140,88,56,.5),transparent 68%),radial-gradient(circle at 15% 20%,rgba(197,161,106,.12),transparent 40%),radial-gradient(circle at 85% 80%,rgba(120,40,60,.18),transparent 45%),linear-gradient(145deg,#1b0f0b,#3a2019)}
+.album,.album-navigation,.album-dots,.album-open-hint,.album-scene .stage-back{z-index:2}
+.sparkle{position:absolute;border-radius:50%;background:radial-gradient(circle,#ffe9b8,transparent 70%);animation:twinkle 4s ease-in-out infinite;pointer-events:none;z-index:1}
+@keyframes twinkle{0%,100%{opacity:.08;transform:scale(.6)}50%{opacity:.85;transform:scale(1.25)}}
+.petal{position:absolute;top:-8%;color:#d9a0a8;opacity:.5;pointer-events:none;z-index:1;animation:drift linear infinite}
+@keyframes drift{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(40px,55vh) rotate(180deg)}100%{transform:translate(-20px,112vh) rotate(360deg)}}
+
+/* leather cover: grain, stitching, gold foil */
+.album-cover{background:repeating-linear-gradient(45deg,rgba(255,255,255,.025) 0 2px,transparent 2px 5px),radial-gradient(ellipse at 50% 40%,#7a3a2a,#471d1d 62%,#260f13)}
+.album-cover::before{border:1px dashed #c5a16a;inset:15px;border-radius:5px;box-shadow:0 0 0 7px rgba(197,161,106,.16),0 0 0 8px rgba(197,161,106,.5)}
+.album-title{background:linear-gradient(180deg,#f9e2ad,#c9974f 58%,#ecca8b);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 2px 5px #1c0908)}
+.album-ornament{background:linear-gradient(180deg,#f9e2ad,#c9974f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.album-ribbon{border-left:1px solid #d9b475;border-right:1px solid #d9b475}
+
+/* the open book: boards, page-block edge, paper, gutter */
+.album-pages{border-radius:3px;box-shadow:0 0 0 9px #4a2418,0 0 0 11px #a77b42,0 0 0 14px #2b140d,0 2px 0 11px #e6d4b2,0 5px 0 11px #cdb48c,0 40px 70px rgba(0,0,0,.6);
+ background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.35),transparent 70%),repeating-linear-gradient(0deg,rgba(120,85,45,.03) 0 1px,transparent 1px 3px),linear-gradient(90deg,#ecdbbd,#f8eddb 9%,#f8eddb 45%,#e7d4b3 49.6%,#cdb48c 50%,#e7d4b3 50.4%,#f8eddb 55%,#f8eddb 91%,#ecdbbd)}
+.album-page-left,.album-page-right{position:relative}
+.album-page-left::before,.album-page-right::before{content:"";position:absolute;inset:12px;border:1px solid rgba(177,138,81,.4);pointer-events:none}
+.album-page-left::after,.album-page-right::after{content:"";position:absolute;inset:8px;pointer-events:none;opacity:.85;
+ background:linear-gradient(#b18a51,#b18a51) left top/24px 2px no-repeat,linear-gradient(#b18a51,#b18a51) left top/2px 24px no-repeat,linear-gradient(#b18a51,#b18a51) right top/24px 2px no-repeat,linear-gradient(#b18a51,#b18a51) right top/2px 24px no-repeat,linear-gradient(#b18a51,#b18a51) left bottom/24px 2px no-repeat,linear-gradient(#b18a51,#b18a51) left bottom/2px 24px no-repeat,linear-gradient(#b18a51,#b18a51) right bottom/24px 2px no-repeat,linear-gradient(#b18a51,#b18a51) right bottom/2px 24px no-repeat}
+.album-page-left{border-right:0}
+.album-spread{transform-origin:left center;animation:pageTurn .8s cubic-bezier(.3,.7,.2,1) both}
+@keyframes pageTurn{from{opacity:0;transform:perspective(1500px) rotateY(-16deg) translateX(-14px)}to{opacity:1;transform:none}}
+
+/* chapter heading */
+.album-chapter-number{display:flex;flex-direction:column;align-items:center;gap:8px}
+.album-medallion{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;border:1px solid #b18a51;box-shadow:inset 0 0 0 3px #f8eddb,inset 0 0 0 4px #c9a56a;font:italic 500 19px "Cormorant Garamond",serif;color:#8a6234}
+.album-divider{display:flex;align-items:center;justify-content:center;gap:10px;color:#b18a51;font-size:20px}
+.album-divider::before,.album-divider::after{content:"";height:1px;width:46px;background:linear-gradient(90deg,transparent,#b18a51)}
+.album-divider::after{transform:scaleX(-1)}
+.album-spread h2{color:#5a3a26;text-shadow:0 1px 0 #fff8}
+.album-chapter-note{padding-top:10px;border-top:1px dotted #b18a51}
+.album-watermark{position:absolute;inset:0;display:grid;place-items:center;font:230px "Cormorant Garamond",serif;color:#b18a51;opacity:.1;pointer-events:none}
+
+/* taped polaroids */
+.album-photo-card{position:relative;padding:8px 8px 11px;box-shadow:0 8px 18px #4c2d1944,0 1px 0 #fff inset;transition:transform .3s,box-shadow .3s}
+.album-photo-card:hover{transform:rotate(0) translateY(-5px) scale(1.03);box-shadow:0 16px 28px #4c2d1966;z-index:2}
+.album-photo-card::before{content:"";position:absolute;top:-10px;left:50%;width:58px;height:19px;margin-left:-29px;transform:rotate(-4deg);background:rgba(226,192,142,.6);box-shadow:0 1px 3px rgba(0,0,0,.18);clip-path:polygon(0 8%,4% 0,8% 10%,12% 0,100% 0,96% 50%,100% 100%,12% 100%,8% 90%,4% 100%,0 90%,3% 50%)}
+.album-photo-card:nth-child(2)::before{transform:rotate(5deg);background:rgba(224,160,170,.55)}
+.album-photo-card img{filter:sepia(.12) saturate(1.05);box-shadow:inset 0 0 0 1px #0001}
+.album-photo-card span{font-size:16px}
+
+/* chapter dots */
+.album-dots{display:none;position:absolute;bottom:calc(3% + 52px);left:0;right:0;justify-content:center;gap:9px;pointer-events:none}
+.album-dot{width:8px;height:8px;border-radius:50%;border:1px solid #b99567;transition:.3s}
+.album-dot.visited{background:#b99567}
+.album-dot.active{background:#f4d9a4;transform:scale(1.6);box-shadow:0 0 8px #f4d9a4}
+.album-navigation button{border-radius:2px;box-shadow:inset 0 0 0 3px rgba(0,0,0,.15)}
+
+@media(max-width:700px){
+ .album-pages{background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.35),transparent 70%),linear-gradient(#f8eddb,#f1e2c5)}
+ .album-page-left::before,.album-page-left::after{inset:8px}
+ .album-watermark{font-size:150px}
+ .album-dots{bottom:calc(3% + 46px)}
+}
+@media(prefers-reduced-motion:reduce){.sparkle,.petal,.album-spread{animation:none}}
+
+/* ===== Ribbon that unties (satin) ===== */
+.album-ribbon{display:none}
+.album-cover-content{padding-bottom:20%}
+.ribbon-tie{position:absolute;left:-12px;right:-12px;bottom:11%;height:38px;z-index:7;transform:translateZ(3px);border:0;background:none;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent;filter:drop-shadow(0 5px 5px rgba(0,0,0,.45))}
+.rt-band{position:absolute;top:0;height:100%;width:50%;overflow:hidden;border-top:1px solid rgba(255,210,218,.4);
+ background:linear-gradient(180deg,rgba(255,225,230,.25),transparent 8%,transparent 88%,rgba(0,0,0,.35)),repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 1px,transparent 1px 3px),linear-gradient(180deg,#6d1a2d 0,#a8364d 16%,#e0899a 28%,#b4435a 38%,#7e2036 55%,#531020 80%,#3f0a16 100%)}
+.rt-left{left:0;box-shadow:inset 14px 0 14px -6px rgba(0,0,0,.6),inset -26px 0 18px -10px rgba(0,0,0,.55)}
+.rt-right{right:0;box-shadow:inset -14px 0 14px -6px rgba(0,0,0,.6),inset 26px 0 18px -10px rgba(0,0,0,.55)}
+.rt-band::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,240,242,.28) 50%,transparent 65%);background-size:260% 100%;animation:sheen 5.5s ease-in-out infinite}
+@keyframes sheen{0%{background-position:130% 0}100%{background-position:-30% 0}}
+.rt-bow{position:absolute;left:50%;top:50%;width:min(210px,46vw);transform:translate(-50%,-45%);overflow:visible;filter:drop-shadow(0 7px 6px rgba(0,0,0,.5))}
+.rt-loop,.rt-tail,.rt-knot{transform-box:fill-box;transition:transform .6s cubic-bezier(.4,0,.6,1) .3s,opacity .4s .8s}
+.rt-loop-l{transform-origin:100% 70%}.rt-loop-r{transform-origin:0 70%}
+.rt-tail{transform-origin:50% 0}.rt-knot{transform-origin:center}
+.ribbon-tie:not(.untied) .rt-bow{animation:bowSway 3.4s ease-in-out infinite}
+.ribbon-tie:not(.untied):hover .rt-bow{filter:drop-shadow(0 7px 6px rgba(0,0,0,.5)) brightness(1.15)}
+@keyframes bowSway{0%,100%{transform:translate(-50%,-45%) rotate(-1deg)}50%{transform:translate(-50%,-45%) rotate(1deg) scale(1.02)}}
+.ribbon-tie.nudge .rt-bow{animation:bowNudge .5s}
+@keyframes bowNudge{0%,100%{transform:translate(-50%,-45%)}25%{transform:translate(-50%,-45%) rotate(-6deg) scale(1.06)}55%{transform:translate(-50%,-45%) rotate(5deg) scale(1.06)}80%{transform:translate(-50%,-45%) rotate(-2deg)}}
+/* untying: tug, loops flop, knot lets go, bow falls, ribbon slides away */
+.ribbon-tie.untied{pointer-events:none;animation:ribbonGone .3s 1.8s forwards}
+.untied .rt-tail-l{transform:rotate(-12deg) translate(-8px,10px)}
+.untied .rt-tail-r{transform:rotate(16deg) translate(10px,14px)}
+.untied .rt-loop-l{transform:rotate(32deg) scale(.6,.3)}
+.untied .rt-loop-r{transform:rotate(-32deg) scale(.6,.3)}
+.untied .rt-knot{transform:scale(.35,.5);opacity:0}
+.untied .rt-bow{animation:bowTug .35s ease-out,bowFall .9s .85s cubic-bezier(.5,0,.9,.6) forwards}
+@keyframes bowTug{0%,100%{transform:translate(-50%,-45%)}50%{transform:translate(-50%,-49%) scale(1.05)}}
+@keyframes bowFall{0%{transform:translate(-50%,-45%)}100%{transform:translate(-40%,90px) rotate(22deg);opacity:0}}
+.untied .rt-left{transform:translateX(-110%);transition:transform .9s .95s cubic-bezier(.55,0,.8,.5)}
+.untied .rt-right{transform:translateX(110%);transition:transform .9s .95s cubic-bezier(.55,0,.8,.5)}
+@keyframes ribbonGone{to{opacity:0;visibility:hidden}}
+@media(max-width:700px){.album-cover-content{padding-bottom:26%}.ribbon-tie{bottom:9%;height:32px}}
+@media(prefers-reduced-motion:reduce){.rt-band::after,.ribbon-tie .rt-bow{animation:none}}
+
+/* ===== SOFT WHITE THEME — delete this whole block to go back to the dark look ===== */
+html,body,.scene{background:#f5ede3}
+.background{filter:saturate(.8) brightness(1.04)}
+.background::after{background:linear-gradient(180deg,rgba(255,251,246,.6),rgba(255,251,246,.14) 38%,rgba(255,251,246,.06) 70%,rgba(255,251,246,.22))}
+.intro{text-shadow:0 2px 14px rgba(255,252,247,.9)}
+.eyebrow{color:#8a6234}
+h1{color:#4b1929}
+.subtitle{color:#936b42}
+.intro-copy{color:#5a3a26}
+.tap-hint{color:#6b4a33;text-shadow:0 1px 10px #fffaf2}
+.open-view{background:linear-gradient(rgba(255,251,245,.62),rgba(247,236,226,.78)),url("Kizuna-bedroom.png") center/cover no-repeat;backdrop-filter:blur(4px)}
+.open-heading{color:#4b1929;text-shadow:0 2px 14px rgba(255,252,247,.9)}
+.open-heading small{color:#936b42}
+.interior{box-shadow:0 18px 45px rgba(90,58,38,.35)}
+.progress{color:#6b4a33;text-shadow:none}
+.modal,.tease-modal,.rose-modal{background:rgba(250,242,233,.72);backdrop-filter:blur(8px)}
+.letter,.tease-card,.rose-card{box-shadow:0 20px 55px rgba(90,58,38,.3)}
+.final-surprise{background:radial-gradient(ellipse at 50% 20%,rgba(255,251,245,.92),rgba(243,230,217,.97))}
+.final-card{box-shadow:0 22px 60px rgba(90,58,38,.28)}
+.album-scene{background:radial-gradient(ellipse at 50% 45%,#fffaf3,#f3e6d6 72%,#ead9c4)}
+.album-scene .stage-back{color:#785936}
+.album-open-hint,.album-navigation{color:#7a5a3c}
+.sparkle{background:radial-gradient(circle,#d9b475,transparent 70%)}
+.petal{color:#e3aab3;opacity:.6}
+.album-dot{border-color:#b18a51}.album-dot.visited{background:#c9a56a}
+.album-dot.active{background:#8a2339;box-shadow:0 0 8px rgba(138,35,57,.5)}
+.album-pages{box-shadow:0 0 0 9px #4a2418,0 0 0 11px #a77b42,0 0 0 14px #2b140d,0 2px 0 11px #e6d4b2,0 5px 0 11px #cdb48c,0 30px 55px rgba(90,58,38,.38)}
+.album-cover{box-shadow:inset 0 0 0 5px rgba(207,166,99,.18),inset 0 0 45px rgba(0,0,0,.55),0 25px 55px rgba(90,58,38,.45)}
+.chest-finale{background:radial-gradient(ellipse at 50% 35%,#fffaf3,#f1e3d2)}
+.chest-finale-card{background:linear-gradient(145deg,rgba(255,251,245,.95),rgba(242,229,214,.95));border-color:#c6a16d;box-shadow:0 22px 60px rgba(90,58,38,.28)}
+.chest-finale-kicker{color:#936b42}
+.chest-finale h2{color:#4b1929}
+.chest-finale p{color:#765638}
+.chest-finale .final-signature{color:#8a2339}
+
+/* rose bloom-in + gentle sway */
+.rose-art{transform-origin:50% 50%}
+.rose-modal.visible .rose-art{animation:roseBloom 1.3s cubic-bezier(.2,.8,.2,1) both,roseSway 6s 1.3s ease-in-out infinite}
+@keyframes roseBloom{from{opacity:0;transform:scale(.55) translateY(18px)}to{opacity:1;transform:none}}
+@keyframes roseSway{0%,100%{transform:rotate(-2.5deg) scale(1)}50%{transform:rotate(2.5deg) scale(1.025)}}
+@media(prefers-reduced-motion:reduce){.rose-modal.visible .rose-art{animation:none}}
+
+/* Frame always matches the text: the overlay scrolls, the card grows to fit */
+.modal,.tease-modal,.rose-modal{overflow-y:auto}
+.letter,.tease-card,.rose-card{margin:auto;max-height:none;overflow:visible}
+
+/* ===== One big photo per page + story ===== */
+.album{--aw:min(1040px,96vw,calc((100svh - 120px)*1.5));width:var(--aw)}
+.album-page-left,.album-page-right{padding:clamp(18px,3vw,38px)}
+.album-page-right:not(.intro-right){flex-direction:column;flex-wrap:nowrap;align-items:center;justify-content:center}
+.album-page-text{display:flex;flex-direction:column;align-items:center;gap:10px;margin:auto 0}
+.album-photo-card,.album-photo-card:nth-child(2){width:auto;max-width:100%;padding:10px 10px 12px;display:flex;flex-direction:column;align-items:center;transform:rotate(-1.4deg)}
+.album-photo-card:hover{transform:rotate(0) scale(1.02)}
+.album-photo-card img{width:auto;height:auto;max-width:100%;max-height:calc(var(--aw)/1.5 - 150px);aspect-ratio:auto;object-fit:contain}
+.album-photo-card span{font-size:18px;padding-top:9px}
+.album-spread .album-story{font:400 clamp(21px,2.5vw,28px)/1.45 "Great Vibes",cursive;color:#50372b;margin-top:6px;max-height:calc(var(--aw)/1.5 - 340px);overflow-y:auto;padding:0 4px;scrollbar-width:thin}
+@media(max-width:700px){
+ .album{--aw:96vw;height:78vh}
+ .album-page-right{order:-1}
+ .album-photo-card img{max-height:46vh}
+ .album-spread .album-story{max-height:none;font-size:24px}
+}
+
+/* ===== Mobile polish ===== */
+@media(max-width:700px){
+ /* puzzle fits on one screen */
+ .puzzle-view{padding:10px 10px 28px}
+ .stage-back{padding:6px 0}
+ .puzzle-card{margin-top:0;padding:18px 16px}
+ .puzzle-card h2{font-size:34px;margin:8px 0}
+ .puzzle-intro{font-size:16px;margin:0 0 8px}
+ .jigsaw-layout{margin:8px 0 4px;gap:10px}
+ .heart-board-wrap{width:min(56vw,220px)}
+ .piece-panel{padding:10px}
+ .piece-instructions{font-size:15px;margin:6px 0 8px}
+ .piece-tray{grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
+ .jigsaw-piece{max-width:none;font-size:15px}
+ .puzzle-feedback{min-height:22px;font-size:14px;margin:8px 0 2px}
+ .unlock-button{padding:11px 18px}
+}
+/* album: the page scrolls naturally on phones and short landscape screens */
+@media(max-width:700px),(max-height:520px){
+ .album-scene{flex-direction:column;align-items:center;justify-content:flex-start;overflow-y:auto;overflow-x:hidden;padding:54px 18px 130px;-webkit-overflow-scrolling:touch}
+ .album-scene .stage-back{position:fixed;top:8px;left:10px;z-index:9;padding:6px 12px;background:rgba(245,237,227,.92);border-radius:3px;box-shadow:0 2px 8px rgba(90,58,38,.2)}
+ .album{--aw:94vw;width:min(calc(100vw - 52px),640px);height:auto;min-height:78vh;aspect-ratio:auto;margin:auto}
+ .album.opened .album-pages{position:relative;inset:auto;min-height:72vh;overflow:visible}
+ .album-inside{height:auto;min-height:72vh}
+ .album-spread{height:auto;min-height:72vh;grid-template-columns:1fr;grid-auto-rows:auto}
+ .album-page-right:not(.intro-right){order:-1}
+ .album-page-left,.album-page-right{padding:26px 18px}
+ .album-photo-card img{max-height:62vh}
+ .album-spread .album-story{max-height:none;font-size:25px}
+ .album-navigation{position:fixed;bottom:0;left:0;right:0;z-index:9;gap:8px;padding:12px 12px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(245,237,227,.97) 35%)}
+ .album-navigation button{white-space:nowrap;padding:11px 14px;font-size:10px}
+ .album-navigation span{flex:1;text-align:center;font-size:9px;letter-spacing:.12em;line-height:1.4}
+ .album-dots{position:fixed;bottom:calc(66px + env(safe-area-inset-bottom));left:50%;right:auto;transform:translateX(-50%);width:auto;padding:6px 12px;border-radius:12px;background:rgba(245,237,227,.92);box-shadow:0 2px 8px rgba(90,58,38,.18);z-index:9}
+ .album-open-hint{position:static;margin-top:14px}
+}
+
+/* short screens (landscape phones) */
+.open-view{position:fixed}
+@media(max-height:700px),(max-width:700px){.album-dots{display:none!important}}
+@media(max-height:520px){
+ .scene{min-height:0}
+ .intro{top:2%}
+ h1{font-size:32px;margin-top:6px}
+ .subtitle{font-size:20px}
+ .intro-copy{display:none}
+ .chest-hotspot{top:34%;height:56%}
+ .open-view{justify-content:flex-start;padding-top:12px}
+ .open-heading{font-size:26px;margin-bottom:10px}
+ .gift{min-height:84px}
+}
+</style>
+</head>
+
+<body>
+<main class="scene">
+  <div class="background" aria-hidden="true"></div>
+  <header class="intro" id="intro">
+    <div class="eyebrow">A little anniversary keepsake</div>
+    <h1>Six Moons &amp; a Little Magic</h1>
+    <div class="subtitle">An Archive of Us</div>
+    <p class="intro-copy">Six moons have passed, and somehow, the universe keeps finding new ways to surprise me with you.</p>
+  </header>
+
+  <button class="chest-hotspot" id="chestHotspot" aria-label="Open the Kizuna keepsake chest" title="Open the keepsake chest"></button>
+  <div class="tap-hint" id="tapHint">A little something is waiting inside · click the chest</div>
+
+  <section class="open-view" id="openView" aria-hidden="true">
+    <div class="open-heading"><small>Six months, countless little moments</small>A few things I kept for you.</div>
+    <div class="interior"><div class="interior-inner"><div class="compartments" id="compartments"></div></div></div>
+    <div class="progress" id="progress">0 OF 6 MEMORIES EXPLORED</div>
+    <button class="chest-finish" id="chestFinish" type="button">Close our little world</button>
+  </section>
+
+  <section class="puzzle-view" id="puzzleView" aria-hidden="true">
+    <button class="stage-back" id="puzzleBack">← Back to the keepsake chest</button>
+    <div class="puzzle-card">
+      <div class="stage-eyebrow">The seventh keepsake · a little challenge</div>
+      <h2>A little peony to<br><em>put together.</em></h2>
+      <p class="puzzle-intro">A little flower, petal by petal. Place these five pieces, Bhargava, and see what is waiting on the other side.</p>
+      <div class="jigsaw-layout">
+        <div class="heart-board-wrap">
+          <div class="heart-board" id="heartBoard" aria-label="Peony flower puzzle board"></div>
+          <div class="heart-reveal" id="heartReveal" aria-live="polite"><span class="kanji">絆</span><span class="romaji">KIZUNA</span><small>A thousand little moments. One beautiful bond.</small></div>
+        </div>
+        <div class="piece-panel">
+          <div class="piece-heading">FIVE LITTLE PETALS <span id="pieceCount">0 / 5</span></div>
+          <p class="piece-instructions">Tap a petal, then tap its matching outline in the flower. You can also drag it into place.</p>
+          <div class="piece-tray" id="pieceTray" aria-label="Jigsaw pieces"></div>
+          <p class="puzzle-feedback" id="puzzleFeedback" aria-live="polite">Five petals. No rush. You've got this.</p>
+          <button class="unlock-button" id="resetPuzzle" type="button">Scatter the pieces again</button>
+        </div>
+      </div>
+      <button class="unlock-button cabinet-unlock" id="solvePuzzle" disabled>Open our memory album</button>
+    </div>
+  </section>
+
+  <section class="album-scene" id="albumScene" aria-hidden="true">
+    <button class="stage-back" id="albumBack" type="button">← Back to the peony puzzle</button>
+    <div class="album" id="memoryAlbum">
+      <button class="album-cover" id="albumCover" type="button" aria-label="Open our memory album">
+        <div class="album-cover-content">
+          <div class="album-ornament">✿ ❧ ✿</div>
+          <div class="album-title">Six Moons<br>&amp; A Little Magic</div>
+          <div class="album-subtitle">An Album of Us</div>
+          <div style="color:#d9b475;margin-top:24px;font-size:22px">☾ ✧</div>
+        </div>
+      </button>
+      <button class="ribbon-tie" id="ribbonTie" type="button" aria-label="Untie the ribbon to open the album">
+        <span class="rt-band rt-left"></span><span class="rt-band rt-right"></span>
+        <svg class="rt-bow" viewBox="0 0 260 190" aria-hidden="true">
+          <defs>
+            <linearGradient id="sLoop" x1="0" y1="0" x2=".7" y2="1"><stop offset="0" stop-color="#8a2339"/><stop offset=".22" stop-color="#d06a7e"/><stop offset=".38" stop-color="#9c2b44"/><stop offset=".6" stop-color="#6e1a2e"/><stop offset=".8" stop-color="#a23a52"/><stop offset="1" stop-color="#4a0e1b"/></linearGradient>
+            <linearGradient id="sUnder" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3f0b17"/><stop offset=".5" stop-color="#6a1b2d"/><stop offset="1" stop-color="#3a0914"/></linearGradient>
+            <linearGradient id="sTail" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c1f34"/><stop offset=".35" stop-color="#cb5f74"/><stop offset=".55" stop-color="#8a2339"/><stop offset="1" stop-color="#4a0e1b"/></linearGradient>
+            <linearGradient id="sKnot" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4e0f1e"/><stop offset=".3" stop-color="#b14a60"/><stop offset=".5" stop-color="#d77a8c"/><stop offset=".7" stop-color="#9a2b43"/><stop offset="1" stop-color="#3f0a16"/></linearGradient>
+            <g id="tailShape">
+              <path d="M122 94 C116 124 92 144 76 176 L90 166 L102 188 C114 158 130 128 138 98Z" fill="url(#sTail)" stroke="#3d0b16" stroke-opacity=".6" stroke-width=".8" stroke-linejoin="round"/>
+              <path d="M126 102 C121 126 102 146 88 172" fill="none" stroke="#f4b6c2" stroke-opacity=".35" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M132 104 C128 124 116 142 104 170" fill="none" stroke="#2c0610" stroke-opacity=".3" stroke-width="1.2"/>
+            </g>
+            <g id="loopShape">
+              <path d="M126 84 C98 28 22 20 14 64 C8 104 84 114 128 94Z" fill="url(#sLoop)" stroke="#3d0b16" stroke-opacity=".6" stroke-width=".8" stroke-linejoin="round"/>
+              <path d="M120 84 C98 50 50 46 42 68 C38 90 90 98 122 90Z" fill="url(#sUnder)"/>
+              <path d="M26 52 C44 34 86 38 110 64" fill="none" stroke="#f6c0cb" stroke-opacity=".45" stroke-width="2" stroke-linecap="round"/>
+              <path d="M44 100 C72 106 104 100 124 92" fill="none" stroke="#2c0610" stroke-opacity=".35" stroke-width="1.4" stroke-linecap="round"/>
+            </g>
+          </defs>
+          <g class="rt-tail rt-tail-l"><use href="#tailShape"/></g>
+          <g class="rt-tail rt-tail-r"><use href="#tailShape" transform="translate(260,0) scale(-1,1)"/></g>
+          <g class="rt-loop rt-loop-l"><use href="#loopShape"/></g>
+          <g class="rt-loop rt-loop-r"><use href="#loopShape" transform="translate(260,0) scale(-1,1)"/></g>
+          <g class="rt-knot">
+            <path d="M113 74 C114 64 146 64 147 74 L149 98 C149 108 111 108 111 98Z" fill="url(#sKnot)" stroke="#3d0b16" stroke-opacity=".65" stroke-width=".9"/>
+            <path d="M121 70 L120 104M130 68 L130 106M139 70 L140 104" stroke="#2c0610" stroke-opacity=".25" stroke-width="1" fill="none"/>
+            <path d="M118 72 C126 67 134 67 142 72" fill="none" stroke="#f6c0cb" stroke-opacity=".5" stroke-width="1.6" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </button>
+      <div class="album-pages"><div class="album-inside" id="albumSpread"></div></div>
+    </div>
+    <div class="album-open-hint" id="albumOpenHint">A little story, tied up with a ribbon · tap the bow</div>
+    <div class="album-dots" id="albumDots" aria-hidden="true"></div>
+    <div class="album-navigation" id="albumNavigation">
+      <button id="albumPrevious" type="button">← Previous</button>
+      <span id="albumPageCounter">Cover</span>
+      <button id="albumNext" type="button">Next →</button>
+    </div>
+  </section>
+
+  <div class="photo-lightbox" id="photoLightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close photograph">×</button>
+    <img id="lightboxImage" src="" alt="A memory">
+    <div id="lightboxCaption"></div>
+  </div>
+
+  <section class="final-surprise" id="finalSurprise" role="dialog" aria-modal="true" aria-labelledby="finalTitle">
+    <article class="final-card">
+      <div class="final-kicker">One last question · from me to you</div>
+      <h2 id="finalTitle">You've asked me this so many times...</h2>
+      <p class="final-intro">So, let it be my turn.</p>
+      <div class="final-question">Can I, Nikhita Poduri, be your partner in love, togetherness, hardships and tranquillity?</div>
+      <p class="final-subtext">For all the ordinary days, extraordinary moments, and everything in between.</p>
+      <div class="final-options" id="finalOptions">
+        <button class="final-option" data-answer="yes">Yes</button>
+        <button class="final-option" data-answer="no">No</button>
+        <button class="final-option" data-answer="time">I need time</button>
+        <button class="final-option" data-answer="heart">Do not ask that, since you're already the one who rules my heart.</button>
+      </div>
+      <div class="final-response" id="finalResponse" aria-live="polite"></div>
+      <p class="final-signoff">Six moons down. A lifetime of little moments to go.</p>
+      <button class="final-exit" id="returnToChest" type="button">Return to the keepsake chest</button>
+    </article>
+  </section>
+
+  <div class="tease-modal" id="teaseModal" role="dialog" aria-modal="true" aria-labelledby="teaseTitle">
+    <div class="tease-card">
+      <div class="tease-kicker">A tiny plot twist</div>
+      <h2 id="teaseTitle">Not so fast, Evandi.</h2>
+      <p>Did you really think I'd let you open the last one that easily? There's one more little adventure tucked away. Solve a few clues, and I'll show you.</p>
+      <div class="tease-actions">
+        <button id="teaseClose">I'll be back</button>
+        <button class="primary" id="teasePuzzle">Challenge accepted</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
+    <article class="letter">
+      <div class="letter-label" id="letterLabel"></div>
+      <h2 id="letterTitle"></h2>
+      <div class="letter-body" id="letterBody"></div>
+      <button class="close-button" id="closeModal">Return to the archive</button>
+    </article>
+  </div>
+
+  <div class="modal" id="anniversaryLetterModal" role="dialog" aria-modal="true" aria-labelledby="anniversaryLetterTitle">
+    <article class="letter">
+      <div class="letter-label">A little anniversary letter · kept just for you</div>
+      <h2 id="anniversaryLetterTitle">Hello my love,</h2>
+      <div class="letter-body" id="anniversaryLetterBody"></div>
+      <div class="anniversary-letter-actions">
+        <button class="close-button download-letter" id="downloadAnniversaryLetter" type="button">Download your letter</button>
+        <button class="close-button" id="tryAnotherAnswer" type="button">Try another answer</button>
+        <button class="close-button" id="closeAnniversaryLetter" type="button">Keep this close</button>
+      </div>
+    </article>
+  </div>
+
+  <div class="rose-modal" id="roseModal" role="dialog" aria-modal="true" aria-labelledby="roseTitle">
+    <article class="rose-card">
+      <div class="rose-kicker">The ninth keepsake · a little something in bloom</div>
+      <h2 id="roseTitle">A Rose, Just for You</h2>
+      <svg class="rose-art" id="roseArt" data-answer="yes" viewBox="0 0 220 245" role="img" aria-label="A single rose in bloom">
+<defs>
+<radialGradient id="rpGrad" cx=".5" cy="1" r="1.2" fx=".5" fy="1"><stop offset="0" style="stop-color:var(--petal-dark)"/><stop offset=".55" style="stop-color:var(--petal)"/><stop offset="1" style="stop-color:var(--petal-light)"/></radialGradient>
+<radialGradient id="rLeafG" cx=".5" cy="1" r="1"><stop offset="0" stop-color="#2a3825"/><stop offset="1" style="stop-color:var(--leaf)"/></radialGradient>
+<g id="rPet"><path d="M0 0 C-.62 -.18 -.86 -.74 -.42 -.97 C-.2 -1.07 .2 -1.07 .42 -.97 C.86 -.74 .62 -.18 0 0Z" fill="url(#rpGrad)" style="stroke:var(--petal-dark)" stroke-opacity=".55" stroke-width=".012"/>
+<path d="M-.4 -.96 C-.2 -1.05 .2 -1.05 .4 -.96" fill="none" style="stroke:var(--petal-light)" stroke-width=".03" stroke-linecap="round" opacity=".75"/></g>
+<g id="rLeafS"><path d="M0 0 C-.34 -.3 -.3 -.78 0 -1 C.3 -.78 .34 -.3 0 0Z" fill="url(#rLeafG)" stroke="#1f2a1a" stroke-opacity=".5" stroke-width=".012"/><path d="M0 -.04 L0 -.9M0 -.3 L-.16 -.5M0 -.3 L.16 -.5M0 -.55 L-.13 -.72M0 -.55 L.13 -.72" stroke="#1f2a1a" stroke-opacity=".35" stroke-width=".012" fill="none"/></g>
+</defs>
+<use href="#rLeafS" transform="translate(110 122) rotate(18) scale(110.1)"/>
+<use href="#rLeafS" transform="translate(110 122) rotate(90) scale(110.1)"/>
+<use href="#rLeafS" transform="translate(110 122) rotate(162) scale(110.1)"/>
+<use href="#rLeafS" transform="translate(110 122) rotate(234) scale(110.1)"/>
+<use href="#rLeafS" transform="translate(110 122) rotate(306) scale(110.1)"/>
+<use href="#rPet" transform="translate(110 122) rotate(0.0) scale(86.0)"/>
+<use href="#rPet" transform="translate(110 122) rotate(137.5) scale(81.6)"/>
+<use href="#rPet" transform="translate(110 122) rotate(275.0) scale(78.0)"/>
+<use href="#rPet" transform="translate(110 122) rotate(412.5) scale(74.7)"/>
+<use href="#rPet" transform="translate(110 122) rotate(550.0) scale(71.6)"/>
+<use href="#rPet" transform="translate(110 122) rotate(687.5) scale(68.6)"/>
+<use href="#rPet" transform="translate(110 122) rotate(825.0) scale(65.7)"/>
+<use href="#rPet" transform="translate(110 122) rotate(962.5) scale(62.9)"/>
+<use href="#rPet" transform="translate(110 122) rotate(1100.0) scale(60.1)"/>
+<use href="#rPet" transform="translate(110 122) rotate(1237.5) scale(57.4)"/>
+<use href="#rPet" transform="translate(110 122) rotate(1375.0) scale(54.7)"/>
+<use href="#rPet" transform="translate(110 122) rotate(1512.5) scale(52.0)"/>
+<use href="#rPet" transform="translate(110 122) rotate(1650.0) scale(49.4)"/>
+<use href="#rPet" transform="translate(110 122) rotate(1787.5) scale(46.9)"/>
+<use href="#rPet" transform="translate(110 122) rotate(1925.0) scale(44.3)"/>
+<use href="#rPet" transform="translate(110 122) rotate(2062.5) scale(41.8)"/>
+<use href="#rPet" transform="translate(110 122) rotate(2200.0) scale(39.3)"/>
+<use href="#rPet" transform="translate(110 122) rotate(2337.5) scale(36.8)"/>
+<use href="#rPet" transform="translate(110 122) rotate(2475.0) scale(34.4)"/>
+<use href="#rPet" transform="translate(110 122) rotate(2612.5) scale(32.0)"/>
+<use href="#rPet" transform="translate(110 122) rotate(2750.0) scale(29.6)"/>
+<use href="#rPet" transform="translate(110 122) rotate(2887.5) scale(27.2)"/>
+<use href="#rPet" transform="translate(110 122) rotate(3025.0) scale(24.8)"/>
+<use href="#rPet" transform="translate(110 122) rotate(3162.5) scale(22.4)"/>
+<use href="#rPet" transform="translate(110 122) rotate(3300.0) scale(20.1)"/>
+<use href="#rPet" transform="translate(110 122) rotate(3437.5) scale(17.8)"/>
+<use href="#rPet" transform="translate(110 122) rotate(3575.0) scale(15.5)"/>
+<use href="#rPet" transform="translate(110 122) rotate(3712.5) scale(13.2)"/>
+<use href="#rPet" transform="translate(110 122) rotate(3850.0) scale(10.9)"/>
+<use href="#rPet" transform="translate(110 122) rotate(3987.5) scale(8.6)"/>
+</svg>
+      <p class="rose-note">A little flower for you. Its colour may change, but one thing won't — I'd still choose to give it to you.</p>
+      <button class="close-button rose-close" id="closeRose" type="button">Keep this close</button>
+    </article>
+  </div>
+
+  <section class="chest-finale" id="chestFinale" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="chestFinaleTitle">
+    <div class="chest-finale-card">
+      <div class="chest-finale-kicker">The last little keepsake</div>
+      <h2 id="chestFinaleTitle">Until the next little adventure, Bhargava.</h2>
+      <p>All my tomorrows, tucked away in one little chest.</p>
+      <div class="final-signature">With love, Nikhita</div>
+    </div>
+  </section>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+
+/* ---------- The seven keepsakes ---------- */
+const gifts = [
+  {title:"The First Hello",label:"Chapter I · Where it began",body:`I never imagined that an ordinary introduction at work would become one of my favourite beginnings.
+
+<strong><em>"Meeru Nikhita na? Manoj chepparu meeru NXP lo work chestunnaru ani. Na opposite lo kurchuntaru ani, kani confuse ayanu, moodu ammailu kurchuntaru, andulo nunchi yevvaru ani, appudu teams lo picture choosanu, kanipetanu meere ani."</em></strong>
+
+I remember meeting you, the little conversations, and the way you slowly became someone I looked forward to talking to. Somehow, I met a man with all the qualities I've always respected.`},
+  {title:"The Turning Point",label:"Chapter II · When things changed",body:`Somewhere between our conversations and all those little moments, something changed. I still remember the things you said, the things you made me feel, and the moment I realised that this was becoming something rather special.
+
+<strong><em>"When I look into your eyes, I don't just see my self. I see the quiet, honest moments of your day that nobody else gets to notice. I see the exact second your thoughts turn into a smile before you even make a sound. It is like looking at a beautifully written book that only I have the privilege to read...and honestly, looking at you look at me? I know u r falling for me already"</em></strong>
+
+Oh such a flirt you are. But I loved it. And I loved you.`},
+  {title:"The Bhargava Files",label:"Chapter III · Classified information",body:`Subject: Bhargava.
+
+Known characteristics: Serious when he wants to be, stubborn when he shouldn't be, ridiculously soft when it matters (claims it's only for me, but I know better), and a little bit of a flirt. Occasionally annoying, extremely cuddly, warm, goofy.
+<strong><em>Status</em></strong>: Very much loved.
+
+Further investigation is ongoing, while inevitably falling deeper into the depths of your love.
+
+<strong><em>Verdict</em></strong>: Everything about you is a mystery I want to solve.`},
+  {title:"The Little Things",label:"Chapter IV · The details I keep",body:`It's never only the grand gestures.
+
+It's the little updates, the unexpected pictures, the things you cannot wait to share, the way you check on me, and all the tiny details that make ordinary days feel special. I notice more than you think. And I love every little thing about you, even the things you think are too small to matter or about habits you said you changed to have a good future with your partner.
+
+<strong><em>"U know, out of nowhere I just felt like telling you this ra banagaram , uve become such a big part of my life that it’s hard to imagine my days without you in them. Ur not just someone I love, u’ve become my comfort, my happiness, and my little world. Life feels lighter and more beautiful with you beside me ❤️.....while riding back home , I was happy I was just thinking about our future"</em></strong>
+
+<strong><em>"I don’t know why, but today I just felt like telling u this. With u shifting to another office, I already know Im going to miss u a lot. Uve become such a big part of my life that I don’t even realize it sometimes. I love u so much, and u honestly mean more to me than words can explain ❤️, or a few seconds so many thoughts ran through my mind… and weirdly, all I could think about was u. Thats when I realized how important u really are to me. I kept thinking, what would happen to u, to us, and to all the love we r building together if something had happened? It just made me realize even more that I never want to lose what we have"</em></strong>
+
+<strong><em>"Just a random reminder that I love you 3 and Im so grateful ure my girl. ure my favorite person, hands down."</em></strong>
+
+<strong><em>"Pehle baatein thi, phir aadat hui,phir aadat se zarurat hui.
+Ab haal yeh hai,tum yaad na aao toh kami si mehsoos hoti hai"</em></strong>
+
+and the list goes on and on. I could keep going, but I think you get the point.`},
+  {title:"Things I Adore",label:"Chapter V · A list without an ending",body:`I adore your seriousness, your softness, your ambition, your protective side, your ridiculous stubbornness, and the way you can make me smile even when I'm determined not to. And I adore the way you make me feel, the way you make me laugh, and the way you make me feel like the most special person in the world. Sometimes, I question how I got so lucky to have you. And then I remember that it's not luck, it's love. I could keep going. You know that, don't you?`},
+  {title:"Unsent Letters",label:"Chapter VI · Words I kept",body:`There are things I don't always say out loud. How grateful I am that our paths crossed. How much comfort I find in your presence. How lovely it is to have someone to share the smallest and biggest things with. I hope you never doubt how much you mean to me.
+
+Oh and the visceral want to hold you close, to feel your warmth, to be wrapped up in your arms, to get lost in your eyes, to feel your heartbeat against mine, to be with you in every way possible. Of spending mundane days, of slow dancing on a random song, or to get drenched in rain and get lost in the fire of our desires and love.
+
+Every moment I just want to be wrapped in those sturdy arms of yours, to be felt desired, cherished, respected, loved and wanted. To hear that voice do a contradictory effect on me : Calming my senses yet burning my desires. The eyes looking deeply into mine, just so that we can lose the track of time.
+
+To listen, to talk, to laugh, to cry, to be silly, to be serious, to be us. To be together. To be in love. To be in love with you.`},
+  {title:"To Be Continued",label:"The next chapter · Still unwritten",body:`And this is my favourite part.
+
+There are places we haven't been, stories we haven't told, photographs we haven't taken, and a thousand ordinary days waiting for us, fights we don't know how to resolve, situations we don't know how to navigate. I don't know every little thing that comes next. But I would love to find out with you.
+
+Here's to us, Evandi.
+
+And to everything still to come.`}
+];
+
+const memoryDrawers = [
+ {title:"The Beginning",subtitle:"The first hello, and everything that followed.",photos:[{src:"photos/drawer-01-01.jpeg",caption:"The first photo of you to me",story:""},{src:"photos/drawer-01-02.jpeg",caption:"A beginning",story:""}]},
+ {title:"The Little Dates",subtitle:"A few favourite places, and the person who made them special.",photos:[{src:"photos/drawer-02-01.jpeg",caption:"One of our little dates",story:""},{src:"photos/drawer-02-02.jpeg",caption:"A day to keep",story:""}]},
+ {title:"The Silly Us",subtitle:"Proof that we are, occasionally, absolute menaces.",photos:[{src:"photos/drawer-03-01.jpeg",caption:"Our ridiculous side",story:""},{src:"photos/drawer-03-02.jpeg",caption:"Caught being silly",story:""}]},
+ {title:"My Favourite Human",subtitle:"A drawer dedicated to the person I adore looking at.",photos:[{src:"photos/drawer-04-01.jpeg",caption:"You, being you",story:""},{src:"photos/drawer-04-02.jpeg",caption:"One of my favourites",story:""}]},
+ {title:"Little Adventures",subtitle:"The places, detours and tiny adventures we collected.",photos:[{src:"photos/drawer-05-01.jpeg",caption:"Out and about",story:""},{src:"photos/drawer-05-02.jpeg",caption:"A little adventure",story:""}]},
+ {title:"The Candid Ones",subtitle:"The photographs that feel the most like us.",photos:[{src:"photos/drawer-06-01.jpeg",caption:"A candid moment",story:""},{src:"photos/drawer-06-02.jpeg",caption:"Unplanned and perfect",story:""}]},
+ {title:"Just You",subtitle:"A few frames of the boy behind all my favourite memories.",photos:[{src:"photos/drawer-07-01.jpeg",caption:"My Bhargava",story:""},{src:"photos/drawer-07-02.jpeg",caption:"A face I never tire of",story:""}]},
+ {title:"Just Me",subtitle:"A little corner of this story from my side.",photos:[{src:"photos/drawer-08-01.jpeg",caption:"A little me",story:""},{src:"photos/drawer-08-02.jpeg",caption:"Another frame",story:""}]},
+ {title:"The shirt",subtitle:"First shopping experience that almost made my legs jelly",photos:[{src:"photos/drawer-09-01.jpeg",caption:"Worthy of the calf pain",story:""},{src:"photos/drawer-09-02.jpeg",caption:"my man looking all serious while I picked the dessert",story:""}]},
+ {title:"The Everyday",subtitle:"The ordinary days that quietly became my favourites.",photos:[{src:"photos/drawer-10-01.jpeg",caption:"An ordinary little day",story:""},{src:"photos/drawer-10-02.jpeg",caption:"A moment I kept",story:""}]},
+ {title:"Our Favourite Moments",subtitle:"A few memories that deserve their own little drawer.",photos:[{src:"photos/drawer-11-01.jpeg",caption:"A favourite memory",story:""},{src:"photos/drawer-11-02.jpeg",caption:"One more for always",story:""}]},
+ {title:"Still Becoming",subtitle:"The next pages are waiting to be written.",photos:[{src:"photos/drawer-12-01.jpeg",caption:"Our latest chapter",story:""},{src:"photos/drawer-12-02.jpeg",caption:"More to come",story:""}],note:"And this is where the next surprise begins…"}
+];
+
+/* ---------- State ---------- */
+const explored = new Set();
+const openedDrawers = new Set();
+let puzzleSolved = false, anniversaryLetterViewed = false, roseViewed = false;
+let chestClosed = false, finalSurpriseShown = false;
+let selectedAnswerKey = null, answerAttempts = 0, anniversaryLetterText = "";
+let anniversaryLetterGift = null, roseKeepsakeGift = null;
+let currentAlbumPage = -1;
+
+const compartments = $("compartments"), openView = $("openView"), modal = $("modal");
+const teaseModal = $("teaseModal"), puzzleView = $("puzzleView"), finalSurprise = $("finalSurprise");
+const photoLightbox = $("photoLightbox"), letterModal = $("anniversaryLetterModal"), roseModal = $("roseModal");
+const albumScene = $("albumScene"), memoryAlbum = $("memoryAlbum"), albumSpread = $("albumSpread");
+const albumNavigation = $("albumNavigation"), albumPageCounter = $("albumPageCounter");
+const albumPrevious = $("albumPrevious"), albumNext = $("albumNext");
+
+const show = (el, on = true) => {
+  el.classList.toggle("visible", on);
+  if (el.hasAttribute("aria-hidden")) el.setAttribute("aria-hidden", String(!on));
+};
+
+/* ---------- Chest + keepsakes 1–7 ---------- */
+gifts.forEach((gift, i) => {
+  const b = document.createElement("button");
+  b.className = "gift" + (i === 6 ? " final" : "");
+  b.innerHTML = `<span class="gift-number">${String(i + 1).padStart(2, "0")}</span><span class="gift-name">${gift.title}</span><span class="gift-status">${i === 6 ? "Locked · Explore the first six" : "Open this memory"}</span>`;
+  if (i === 6) b.disabled = true;
+  b.addEventListener("click", () => openGift(i));
+  compartments.appendChild(b);
+});
+
+function openGift(i) {
+  if (i === 6) { show(teaseModal); return; }
+  const g = gifts[i];
+  $("letterLabel").textContent = g.label;
+  $("letterTitle").textContent = g.title;
+  $("letterBody").innerHTML = g.body;
+  show(modal);
+  explored.add(i);
+  updateProgress();
+}
+
+function updateProgress() {
+  const count = explored.size;
+  $("progress").textContent = `${count} OF 6 MEMORIES EXPLORED`;
+  const buttons = [...document.querySelectorAll(".gift")];
+  buttons.forEach((b, i) => {
+    if (i < 6 && explored.has(i)) {
+      b.querySelector(".gift-status").textContent = "Explored";
+      b.style.borderColor = "#d1b27a";
+    }
+  });
+  const last = buttons[6];
+  last.disabled = count < 6;
+  last.style.borderColor = count === 6 ? "#d1b27a" : "";
+  last.querySelector(".gift-status").textContent =
+    count === 6 ? "Unlocked · Your next adventure awaits" : `Locked · ${6 - count} memories remaining`;
+  updateChestFinish();
+}
+updateProgress();
+
+$("chestHotspot").addEventListener("click", () => {
+  intro.style.opacity = "0";
+  intro.style.transform = "translateY(-18px)";
+  $("tapHint").style.opacity = "0";
+  $("chestHotspot").style.pointerEvents = "none";
+  setTimeout(() => show(openView), 450);
+});
+const intro = $("intro");
+
+$("closeModal").addEventListener("click", () => show(modal, false));
+modal.addEventListener("click", e => { if (e.target === modal) show(modal, false); });
+
+/* ---------- Tease + peony puzzle ---------- */
+$("teaseClose").addEventListener("click", () => show(teaseModal, false));
+$("teasePuzzle").addEventListener("click", () => { show(teaseModal, false); show(puzzleView); });
+teaseModal.addEventListener("click", e => { if (e.target === teaseModal) show(teaseModal, false); });
+$("puzzleBack").addEventListener("click", () => show(puzzleView, false));
+
+const heartBoard = $("heartBoard"), pieceTray = $("pieceTray"), pieceCount = $("pieceCount");
+const puzzleFeedback = $("puzzleFeedback"), heartReveal = $("heartReveal"), solvePuzzle = $("solvePuzzle");
+let selectedPiece = null, placedPieces = 0;
+const peonyOrder = [2, 4, 0, 3, 1];
+
+function buildPuzzle() {
+  heartBoard.innerHTML = ""; pieceTray.innerHTML = "";
+  selectedPiece = null; placedPieces = 0;
+  pieceCount.textContent = "0 / 5";
+  heartReveal.classList.remove("visible");
+  solvePuzzle.disabled = true;
+  solvePuzzle.textContent = "Open our memory album";
+  puzzleFeedback.textContent = "Five petals. No rush. You've got this.";
+
+  for (let i = 0; i < 5; i++) {
+    const slot = document.createElement("button");
+    slot.type = "button";
+    slot.className = "puzzle-slot";
+    slot.dataset.slot = i;
+    slot.setAttribute("aria-label", `Place petal ${i + 1} here`);
+    slot.innerHTML = `<span>${i + 1}</span>`;
+    slot.addEventListener("click", () => {
+      if (selectedPiece) placePiece(Number(selectedPiece.dataset.id), i, slot);
+      else if (!slot.classList.contains("filled")) puzzleFeedback.textContent = "Choose a petal first.";
+    });
+    slot.addEventListener("dragover", e => { e.preventDefault(); slot.classList.add("over"); });
+    slot.addEventListener("dragleave", () => slot.classList.remove("over"));
+    slot.addEventListener("drop", e => {
+      e.preventDefault(); slot.classList.remove("over");
+      placePiece(Number(e.dataTransfer.getData("text/plain")), i, slot);
+    });
+    heartBoard.appendChild(slot);
+  }
+
+  [...peonyOrder].sort(() => Math.random() - .5).forEach((correct, position) => {
+    const p = document.createElement("button");
+    p.type = "button";
+    p.className = "jigsaw-piece";
+    p.textContent = correct + 1;
+    p.dataset.correct = correct;
+    p.dataset.id = position;
+    p.draggable = true;
+    p.setAttribute("aria-label", `Peony petal ${correct + 1}`);
+    p.addEventListener("click", () => {
+      if (p.classList.contains("used")) return;
+      if (selectedPiece) selectedPiece.classList.remove("selected");
+      selectedPiece = p; p.classList.add("selected");
+      puzzleFeedback.textContent = `Petal ${correct + 1} selected. Find its matching number in the flower.`;
+    });
+    p.addEventListener("dragstart", e => { e.dataTransfer.setData("text/plain", String(position)); selectedPiece = p; });
+    pieceTray.appendChild(p);
+  });
+}
+
+function placePiece(id, index, slot) {
+  const piece = [...pieceTray.children].find(p => Number(p.dataset.id) === id);
+  if (!piece || piece.classList.contains("used") || slot.classList.contains("filled")) return;
+  if (Number(piece.dataset.correct) !== index) {
+    puzzleFeedback.textContent = "Almost! Match the petal number to its outline.";
+    slot.animate([{scale: ".97"}, {scale: "1.03"}, {scale: "1"}], {duration: 220});
+    return;
+  }
+  slot.classList.add("filled");
+  slot.innerHTML = "<span>✿</span>";
+  piece.classList.add("used");
+  piece.classList.remove("selected");
+  selectedPiece = null;
+  placedPieces++;
+  pieceCount.textContent = `${placedPieces} / 5`;
+  puzzleFeedback.textContent = placedPieces === 5 ? "A peony, in full bloom. Every petal found its place." : "Beautiful. One petal closer to bloom.";
+  if (placedPieces === 5) { heartReveal.classList.add("visible"); solvePuzzle.disabled = false; solvePuzzle.scrollIntoView({behavior: "smooth", block: "center"}); }
+}
+buildPuzzle();
+$("resetPuzzle").addEventListener("click", buildPuzzle);
+
+solvePuzzle.addEventListener("click", () => {
+  if (placedPieces !== 5) return;
+  puzzleSolved = true;
+  updateChestFinish();
+  puzzleFeedback.textContent = "KIZUNA… the bond that holds every little moment together.";
+  solvePuzzle.textContent = "Your memories are waiting…";
+  solvePuzzle.disabled = true;
+  setTimeout(() => { show(puzzleView, false); show(albumScene); }, 1100);
+});
+
+
+/* ---------- Album decoration helpers ---------- */
+const ROMAN = ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"];
+const albumDots = $("albumDots");
+memoryDrawers.forEach(() => { const d = document.createElement("span"); d.className = "album-dot"; albumDots.appendChild(d); });
+function updateDots() {
+  [...albumDots.children].forEach((d, i) => {
+    d.classList.toggle("active", currentAlbumPage >= 0 && i === albumPages[currentAlbumPage].i);
+    d.classList.toggle("visited", openedDrawers.has(i));
+  });
+}
+for (let i = 0; i < 26; i++) {
+  const sp = document.createElement("span"); sp.className = "sparkle";
+  const size = 3 + Math.random() * 5;
+  sp.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;animation-delay:${Math.random()*4}s;animation-duration:${3+Math.random()*4}s`;
+  albumScene.prepend(sp);
+}
+for (let i = 0; i < 9; i++) {
+  const pt = document.createElement("span"); pt.className = "petal"; pt.textContent = "✿";
+  pt.style.cssText = `left:${Math.random()*100}%;font-size:${12+Math.random()*12}px;animation-duration:${16+Math.random()*12}s;animation-delay:${-Math.random()*20}s`;
+  albumScene.prepend(pt);
+}
+
+/* ---------- Album ---------- */
+$("albumBack").addEventListener("click", () => { show(albumScene, false); show(puzzleView); });
+
+function openAlbum() {
+  if (memoryAlbum.classList.contains("opened")) return;
+  memoryAlbum.classList.add("opened");
+  $("albumOpenHint").style.display = "none";
+  albumNavigation.style.display = "flex";
+  albumDots.style.display = "flex";
+  currentAlbumPage = -1;
+  renderAlbumPage();
+}
+
+const ribbonTie = $("ribbonTie");
+let ribbonUntied = false;
+function untieRibbon() {
+  if (ribbonUntied) return;
+  ribbonUntied = true;
+  ribbonTie.classList.remove("nudge");
+  ribbonTie.classList.add("untied");
+  $("albumOpenHint").textContent = "Gently now…";
+  setTimeout(openAlbum, 1900);
+}
+ribbonTie.addEventListener("click", untieRibbon);
+$("albumCover").addEventListener("click", () => {
+  if (ribbonUntied) return;
+  ribbonTie.classList.remove("nudge"); void ribbonTie.offsetWidth; ribbonTie.classList.add("nudge");
+});
+ribbonTie.addEventListener("animationend", e => { if (e.animationName === "bowNudge") ribbonTie.classList.remove("nudge"); });
+
+const albumPages = [];
+memoryDrawers.forEach((d, i) => d.photos.forEach((ph, j) => albumPages.push({d, i, ph, j, total: d.photos.length})));
+
+function renderAlbumPage() {
+  albumSpread.innerHTML = "";
+  if (currentAlbumPage === -1) {
+    albumSpread.innerHTML = `<div class="album-spread">
+      <div class="album-page-left"><div class="album-page-decoration">❧</div><h2>Before you turn another page...</h2><p>Every little moment in here is one I would choose to live again.</p><span class="album-signature">With love, Nikhita</span></div>
+      <div class="album-page-right intro-right"><span class="album-watermark" aria-hidden="true">絆</span><div class="album-page-decoration">☾</div><h2>Six Moons &amp; A Little Magic</h2><p>Twelve little chapters. Countless memories. One story that is ours.</p></div></div>`;
+    albumPageCounter.textContent = "Opening page";
+  } else {
+    const pg = albumPages[currentAlbumPage], d = pg.d, ph = pg.ph;
+    openedDrawers.add(pg.i);
+    const spread = document.createElement("div"); spread.className = "album-spread";
+    const left = document.createElement("div"); left.className = "album-page-left";
+    const right = document.createElement("div"); right.className = "album-page-right";
+    const text = document.createElement("div"); text.className = "album-page-text";
+
+    const num = document.createElement("div"); num.className = "album-chapter-number";
+    num.innerHTML = `<span class="album-medallion">${ROMAN[pg.i]}</span><span>CHAPTER ${String(pg.i + 1).padStart(2, "0")} · PHOTO ${pg.j + 1} OF ${pg.total}</span>`;
+    const title = document.createElement("h2"); title.textContent = d.title;
+    const orn = document.createElement("div"); orn.className = "album-divider"; orn.textContent = "❦";
+    const sub = document.createElement("p"); sub.textContent = d.subtitle;
+    text.append(num, title, orn, sub);
+    if (ph.story) { const st = document.createElement("div"); st.className = "album-story"; st.textContent = ph.story; text.appendChild(st); }
+    if (d.note && pg.j === pg.total - 1) { const n = document.createElement("p"); n.className = "album-chapter-note"; n.textContent = d.note; text.appendChild(n); }
+    left.appendChild(text);
+
+    const card = document.createElement("button");
+    card.className = "album-photo-card"; card.type = "button";
+    const img = document.createElement("img");
+    img.src = ph.src; img.alt = ph.caption; img.loading = "lazy";
+    img.onerror = () => { img.style.opacity = ".2"; };
+    const cap = document.createElement("span"); cap.textContent = ph.caption;
+    card.append(img, cap);
+    card.addEventListener("click", () => openLightbox(ph));
+    right.appendChild(card);
+
+    spread.append(left, right);
+    albumSpread.appendChild(spread);
+    albumPageCounter.textContent = `Chapter ${pg.i + 1} of ${memoryDrawers.length} · ${pg.j + 1}/${pg.total}`;
+  }
+  updateDots();
+  albumPrevious.disabled = currentAlbumPage === -1;
+  albumNext.textContent = currentAlbumPage === albumPages.length - 1 ? "Finish album →" : "Next →";
+  updateChestFinish();
+}
+
+albumNext.addEventListener("click", () => {
+  if (currentAlbumPage < albumPages.length - 1) { currentAlbumPage++; renderAlbumPage(); return; }
+  show(albumScene, false);
+  if (!finalSurpriseShown) {
+    finalSurpriseShown = true;
+    setTimeout(() => show(finalSurprise), 650);
+  } else {
+    show(openView);
+  }
+});
+albumPrevious.addEventListener("click", () => { if (currentAlbumPage > -1) { currentAlbumPage--; renderAlbumPage(); } });
+
+function openLightbox(photo) {
+  $("lightboxImage").src = photo.src;
+  $("lightboxCaption").textContent = photo.caption;
+  show(photoLightbox);
+}
+$("lightboxClose").addEventListener("click", () => show(photoLightbox, false));
+photoLightbox.addEventListener("click", e => { if (e.target === photoLightbox) show(photoLightbox, false); });
+
+/* ---------- The last question ---------- */
+const answerReactions = {
+ yes:{icon:"♥",title:"YOU SAID YES. NOW COME HERE.",copy:"Look who just made me the happiest girl. Thank you for choosing me, for loving me, and for making these six months so wonderfully ours. I hope you know that I choose you too, Bhargava — in every version of life, in every season, and on every ordinary Tuesday.\n\nNow, enough with the screen. Come here and confess your love properly. And perhaps kiss me like you mean it. I think I've earned both."},
+ no:{icon:"♡",title:"A LITTLE THANK-YOU, FROM THE BOTTOM OF MY HEART.",copy:"Thank you for every memory, every laugh, every conversation, every little gesture, and every bit of love you've given me. Whatever the answer to this question, I will always be grateful that our paths crossed.\n\nI hope life is extraordinarily kind to you. I hope you achieve everything you've quietly dreamed of, find happiness in the smallest things, and never run short of reasons to smile. I'll always wish good things for you, Bhargava. Thank you for being such a beautiful part of my story."},
+ time:{icon:"⌛",title:"THERE'S NO RUSH, MY LOVE.",copy:"Take all the time you need. I never wanted this question to feel like a deadline or an expectation. I wanted it to be a little moment where I could tell you how much you mean to me.\n\nThank you for the love, patience, memories, and all the little ways you've made these months special. Whatever you decide, I hope you always know that you deserve a life filled with kindness, fulfilment, laughter, and all the happiness your heart can hold."},
+ heart:{icon:"♥",title:"EXCUSE ME, SIR. THAT WAS NOT AN ANSWER.",copy:"So we're skipping the question and going straight to stealing my heart again? Very clever, Bhargava. Thank you for loving me in all the little ways you do, for making me laugh, and for giving me memories I wouldn't trade for anything.\n\nNow, I have a small request. Come closer, look me in the eyes, tell me you love me, and kiss me like you mean it. No shortcuts this time. I'm waiting."}
+};
+
+const letterOpenings = {
+ yes:"Six months ago, I don't think either of us could have imagined all the little memories we would collect. Today, I get to celebrate not just the time we've shared, but the person who has made it so meaningful.\n\nThank you for choosing me. I choose you too — in the ordinary days, the extraordinary ones, and all the beautifully imperfect moments in between.\n\n",
+ no:"Six months ago, our story began gathering little moments that I will always be grateful to have lived. On our anniversary, I wanted to thank you for every memory, every laugh, every conversation, every kindness, and every bit of love you gave me.\n\nWhatever comes next, I will always hope life is gentle with you. May you find joy in the things you work towards, peace in the quiet moments, and every happiness you deserve.\n\n",
+ time:"Six months of memories, conversations, laughter, and little moments have brought us here. I wanted to ask you something from my heart, but I never wanted the question to become pressure.\n\nTake the time you need. There is no deadline hidden inside this letter. Thank you for all the love, patience, and care you've brought into my days. I hope the days ahead are kind to you and full of everything that makes you happy.\n\n",
+ heart:"Happy anniversary to the boy who somehow manages to make me smile at a screen. Six months, countless little memories, and you still find new ways to steal my heart.\n\nThank you for loving me in all the little ways, for making me laugh, and for being my favourite plot twist. I have a feeling this story has plenty more mischief left in it.\n\n"
+};
+
+function buildLetter(key) {
+  const closing = key === "no" ? "With gratitude and every good wish,\nNikhita" : key === "time" ? "With love, and no rush at all,\nNikhita" : "With all my love,\nBangaram";
+  anniversaryLetterText = `Happy Anniversary, Evandi.\n\n${letterOpenings[key]}\nSix moons down. A lifetime of little moments to go.\n\n${closing}`;
+  $("anniversaryLetterBody").textContent = anniversaryLetterText;
+}
+
+function addKeepsake(id, cls, num, name, status, handler) {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = `gift ${cls}`; b.id = id;
+  b.innerHTML = `<span class="gift-number">${num}</span><span class="gift-name">${name}</span><span class="gift-status">${status}</span>`;
+  b.addEventListener("click", handler);
+  compartments.appendChild(b);
+  return b;
+}
+
+function openAnniversaryLetter() {
+  if (!selectedAnswerKey) return;
+  buildLetter(selectedAnswerKey);
+  show(letterModal);
+  anniversaryLetterViewed = true;
+  updateChestFinish();
+}
+function openRoseKeepsake() {
+  if (!selectedAnswerKey) return;
+  $("roseArt").dataset.answer = selectedAnswerKey;
+  show(roseModal);
+  roseViewed = true;
+  updateChestFinish();
+}
+
+$("finalOptions").addEventListener("click", e => {
+  const button = e.target.closest("button[data-answer]");
+  if (!button) return;
+  selectedAnswerKey = button.dataset.answer;
+  answerAttempts++;
+  const r = answerReactions[selectedAnswerKey];
+  const resp = $("finalResponse");
+  resp.dataset.answer = selectedAnswerKey;
+  resp.innerHTML = `<span class="final-reaction-icon" aria-hidden="true">${r.icon}</span><span class="final-reaction-title">${r.title}</span><span class="final-reaction-copy">${r.copy}</span><span class="final-try-again">You can change your answer. I'm listening. · Choice ${answerAttempts}</span>`;
+  resp.classList.remove("visible"); void resp.offsetWidth; resp.classList.add("visible");
+  document.querySelectorAll(".final-option").forEach(o => o.classList.toggle("chosen", o === button));
+  $("returnToChest").classList.add("visible");
+  if (!anniversaryLetterGift) anniversaryLetterGift = addKeepsake("anniversaryLetterGift", "anniversary-gift", "08", "A Letter for You", "A little something to download", openAnniversaryLetter);
+  if (!roseKeepsakeGift) roseKeepsakeGift = addKeepsake("roseKeepsakeGift", "rose-gift", "09", "A Little Something in Bloom", "A rose, in your colour", openRoseKeepsake);
+  buildLetter(selectedAnswerKey);
+  resp.scrollIntoView({behavior: "smooth", block: "nearest"});
+});
+
+$("returnToChest").addEventListener("click", () => {
+  if (!selectedAnswerKey) return;
+  show(finalSurprise, false);
+  show(openView);
+  roseKeepsakeGift.scrollIntoView({behavior: "smooth", block: "center"});
+});
+
+$("downloadAnniversaryLetter").addEventListener("click", () => {
+  if (!selectedAnswerKey) return;
+  buildLetter(selectedAnswerKey);
+  const url = URL.createObjectURL(new Blob([anniversaryLetterText], {type: "text/plain;charset=utf-8"}));
+  const a = document.createElement("a");
+  a.href = url; a.download = "Happy-Anniversary-Bhargava.txt";
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+});
+$("tryAnotherAnswer").addEventListener("click", () => { show(letterModal, false); show(finalSurprise); finalSurprise.scrollTo({top: 0, behavior: "smooth"}); });
+$("closeAnniversaryLetter").addEventListener("click", () => show(letterModal, false));
+letterModal.addEventListener("click", e => { if (e.target === letterModal) show(letterModal, false); });
+$("closeRose").addEventListener("click", () => show(roseModal, false));
+roseModal.addEventListener("click", e => { if (e.target === roseModal) show(roseModal, false); });
+
+/* ---------- Closing the chest ---------- */
+function chestComplete() {
+  return explored.size === 6 && puzzleSolved && openedDrawers.size === memoryDrawers.length &&
+    Boolean(selectedAnswerKey) && anniversaryLetterViewed && roseViewed;
+}
+function updateChestFinish() {
+  $("chestFinish").classList.toggle("visible", chestComplete() && !chestClosed);
+}
+$("chestFinish").addEventListener("click", () => {
+  if (!chestComplete() || chestClosed) return;
+  chestClosed = true;
+  $("chestFinish").classList.remove("visible");
+  show(openView, false);
+  show($("chestFinale"));
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key !== "Escape") return;
+  [modal, teaseModal, photoLightbox, letterModal, roseModal].forEach(el => show(el, false));
+});
+</script>
+</body>
+</html>
